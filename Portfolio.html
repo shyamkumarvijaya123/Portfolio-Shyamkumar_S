@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SHYAMKUMAR S — Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <style>
+        :root {
+            /* Green Theme Palette */
+            --bg-color: #f0f7f4;        /* Soft minty off-white background */
+            --card-bg: #ffffff;         /* Pure white for the main card */
+            --text-main: #1f2937;       /* Dark slate for high readability */
+            --text-muted: #4b5563;      /* Softer grey-slate for secondary text */
+            
+            /* Differentiated Green Tones */
+            --title-color: #059669;     /* Vibrant emerald green for main section titles */
+            --subtitle-color: #064e3b;  /* Deep dark forest green for company/project names */
+            
+            --accent: #059669;          
+            --accent-light: #ecfdf5;    /* Very light green for backgrounds */
+            --border-color: #e5e7eb;    /* Soft grey border */
+            
+            /* Separate Tone for Buttons */
+            --btn-bg: #10b981;          /* Vibrant, distinct green for buttons */
+            --btn-hover: #047857;       /* Darker green for button hover state */
+            --btn-text: #ffffff;        /* White text on buttons */
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+          font-family: 'Inter', sans-serif;
+          background: var(--bg-color);
+          color: var(--text-main);
+          min-height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+          padding: 60px 20px;
+        }
+
+        .pf {
+          background: var(--card-bg);
+          max-width: 820px;
+          width: 100%;
+          border-radius: 20px;
+          overflow: hidden;
+          box-shadow: 0 20px 40px rgba(4, 120, 87, 0.06), 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        /* ── HERO ── */
+        .pf-hero {
+          background: #ffffff;
+          padding: 60px 56px 40px;
+          position: relative;
+          border-bottom: 1px solid var(--border-color);
+        }
+        .hero-name {
+          font-family: 'Playfair Display', serif;
+          font-size: 56px;
+          font-weight: 700;
+          letter-spacing: -0.02em;
+          margin-bottom: 8px;
+          /* Impressive Green Gradient Text */
+          background: linear-gradient(135deg, #064e3b 0%, #34d399 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        .hero-designation {
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          color: var(--text-muted);
+          margin-bottom: 28px;
+        }
+        .contact-bar {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px 24px;
+        }
+        .contact-item {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 13px;
+          color: var(--text-muted);
+          font-weight: 500;
+          text-decoration: none;
+          transition: color 0.2s ease;
+        }
+        .contact-item:hover { color: var(--accent); }
+        .contact-dot {
+          width: 6px; height: 6px;
+          border-radius: 50%;
+          background: var(--accent);
+          flex-shrink: 0;
+        }
+
+        /* ── BODY ── */
+        .pf-body { padding: 20px 56px 56px; }
+
+        /* ── SECTION ── */
+        .section { padding-top: 40px; }
+        .sec-label {
+          font-size: 15px;               
+          font-weight: 800;              
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          color: var(--title-color);     /* Vibrant Emerald */
+          margin-bottom: 24px;
+          display: flex;
+          align-items: center;
+          gap: 16px;
+        }
+        .sec-label::after {
+          content: '';
+          flex: 1;
+          height: 2px;                   
+          background: #a7f3d0;           
+          border-radius: 2px;
+        }
+
+        /* ── SUMMARY ── */
+        .summary-text {
+          font-size: 15px;
+          color: var(--text-muted);
+          line-height: 1.8;
+          font-weight: 400;
+          text-align: justify;
+        }
+
+        /* ── EXPERIENCE & EDUCATION ── */
+        .exp-item {
+          display: grid;
+          grid-template-columns: 180px 1fr;
+          gap: 0 24px;
+          padding: 20px 0;
+          border-bottom: 1px solid var(--border-color);
+        }
+        .exp-item:last-child { border-bottom: none; }
+        .exp-duration { font-size: 12px; color: var(--text-muted); font-weight: 600; line-height: 1.5; }
+        
+        .exp-company { 
+            font-size: 13px; 
+            color: var(--subtitle-color); /* Deep Dark Forest Green */
+            font-weight: 800; 
+            margin-top: 4px; 
+            letter-spacing: 0.02em;
+        }
+        
+        .exp-role { font-size: 16px; font-weight: 600; color: var(--text-main); margin-bottom: 8px; }
+        
+        /* ── CERTIFICATE BUTTON (Separate Tone) ── */
+        .btn-cert {
+          display: inline-flex;
+          align-items: center;
+          margin-top: 8px;
+          padding: 8px 20px;
+          background: var(--btn-bg);
+          border: none;
+          color: var(--btn-text);
+          text-decoration: none;
+          font-size: 12px;
+          font-weight: 600;
+          border-radius: 30px;
+          transition: all 0.25s ease;
+          cursor: pointer;
+          box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2);
+        }
+        .btn-cert:hover {
+          background: var(--btn-hover);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 16px rgba(4, 120, 87, 0.25);
+        }
+
+        /* ── SKILLS ── */
+        .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .skill-group-label {
+          font-size: 11px;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: var(--text-muted);
+          margin-bottom: 12px;
+        }
+        .pill {
+          display: inline-block;
+          padding: 6px 14px;
+          border-radius: 30px;
+          font-size: 12px;
+          font-weight: 500;
+          margin: 0 4px 6px 0;
+          background: var(--accent-light);
+          border: 1px solid #a7f3d0;
+          color: #065f46;
+        }
+
+        /* ── LANGUAGES ── */
+        .lang-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 400px;}
+        .lang-card {
+          background: var(--accent-light);
+          border: 1px solid #a7f3d0;
+          border-radius: 12px;
+          padding: 16px;
+          text-align: center;
+        }
+        .lang-name-txt { font-size: 15px; font-weight: 600; color: #065f46; }
+
+        /* ── PROJECTS ── */
+        .proj-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        .proj-card {
+          background: #ffffff;
+          border-radius: 12px;
+          padding: 24px;
+          border: 1px solid var(--border-color);
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+        .proj-card::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; width: 4px; height: 100%;
+          background: var(--accent);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+        .proj-card:hover { 
+          box-shadow: 0 8px 24px rgba(4, 120, 87, 0.08); 
+          border-color: #a7f3d0;
+        }
+        .proj-card:hover::before { opacity: 1; }
+        
+        .proj-name { 
+            font-size: 16px; 
+            font-weight: 800; 
+            color: var(--subtitle-color); /* Deep Dark Forest Green to match company names */
+            line-height: 1.4; 
+            margin-bottom: 12px;
+        }
+        .proj-desc { 
+            font-size: 14px; 
+            color: var(--text-muted); 
+            line-height: 1.7; 
+            text-align: justify; 
+        }
+
+        /* ── FOOTER ── */
+        .pf-footer {
+          background: #f9fafb;
+          padding: 24px 56px;
+          text-align: center;
+          font-size: 12px;
+          color: var(--text-muted);
+          letter-spacing: 0.05em;
+          border-top: 1px solid var(--border-color);
+        }
+
+        /* ── MODAL STYLES ── */
+        .modal-overlay {
+          position: fixed;
+          top: 0; left: 0; right: 0; bottom: 0;
+          background: rgba(15, 23, 42, 0.7);
+          backdrop-filter: blur(4px);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 1000;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease;
+        }
+        .modal-overlay.active {
+          opacity: 1;
+          visibility: visible;
+        }
+        .modal-container {
+          background: #ffffff;
+          width: 90%;
+          max-width: 900px;
+          height: 85vh;
+          border-radius: 12px;
+          position: relative;
+          box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+          display: flex;
+          flex-direction: column;
+          transform: scale(0.95);
+          transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-container {
+          transform: scale(1);
+        }
+        .modal-header {
+          padding: 12px 20px;
+          border-bottom: 1px solid var(--border-color);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background: var(--accent-light);
+          border-radius: 12px 12px 0 0;
+        }
+        .modal-title { font-size: 14px; font-weight: 600; color: var(--subtitle-color); }
+        .close-btn {
+          background: transparent; border: none;
+          font-size: 24px; color: var(--subtitle-color);
+          cursor: pointer; line-height: 1;
+          transition: color 0.2s ease;
+        }
+        .close-btn:hover { color: #ef4444; }
+        .modal-body { flex: 1; width: 100%; height: 100%; border-radius: 0 0 12px 12px; overflow: hidden; }
+        .modal-body iframe { width: 100%; height: 100%; border: none; }
+
+        @media (max-width: 700px) {
+          body { padding: 0; }
+          .pf { border-radius: 0; box-shadow: none; }
+          .pf-hero { padding: 40px 24px 30px; }
+          .hero-name { font-size: 40px; }
+          .pf-body { padding: 0 24px 40px; }
+          .exp-item { grid-template-columns: 1fr; gap: 8px; }
+          .skills-grid, .lang-grid { grid-template-columns: 1fr; gap: 16px;}
+          .pf-footer { padding: 20px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="pf">
+    <div class="pf-hero">
+        <div class="hero-name">SHYAMKUMAR S</div>
+        <div class="hero-designation">B.E Electronics and Communication Engineering</div>
+        <div class="contact-bar">
+            <div class="contact-item"><div class="contact-dot"></div>+91 7358880474</div>
+            <a href="mailto:shyamkumarvijaya123@gmail.com" class="contact-item"><div class="contact-dot"></div>shyamkumarvijaya123@gmail.com</a>
+            <a href="https://www.linkedin.com/in/shyamkumar-s-539370320" class="contact-item" target="_blank"><div class="contact-dot"></div>LinkedIn Profile</a>
+        </div>
+    </div>
+
+    <div class="pf-body">
+        <div class="section">
+            <div class="sec-label">Executive Summary</div>
+            <div class="summary-text">
+                A B.E. Electronics and Communication Engineering student at Sri Sai Ram Engineering College, Chengalpattu, with a strong academic foundation in electronics, communication systems, and embedded technologies. Gained valuable industrial exposure through in-plant training at Daimler India Commercial Vehicles (DICV) and an internship at Mahindra Research Valley (MRV), developing practical insights into vehicle electronics, system development, and real-world engineering processes. Additionally, completed an internship at AI Infotech, with experience in web development using AI and API integration.<br><br>
+                Eager to begin my professional career in a dynamic organization where I can apply my engineering knowledge, work on impactful projects, and continuously develop my technical and problem-solving skills while contributing to organizational growth.
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="sec-label">Education</div>
+            <div class="exp-item">
+                <div>
+                    <div class="exp-duration">2026</div>
+                    <div class="exp-company">Sri Sai Ram Engineering College</div>
+                </div>
+                <div>
+                    <div class="exp-role">Bachelor of Engineering</div>
+                    <div style="font-size: 14px; color: var(--text-muted);">Electronics and Communication Engineering</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="sec-label">Experience</div>
+
+            <div class="exp-item">
+                <div>
+                    <div class="exp-duration">2024</div>
+                    <div class="exp-company">DAIMLER INDIA COMMERCIAL VEHICLE</div>
+                </div>
+                <div>
+                    <div class="exp-role">Inplant Training - Operational Truck</div>
+                    <button class="btn-cert open-modal" data-src="https://drive.google.com/file/d/1vC0ZrbqpcatkBia7787hUHFGmFkDT9KT/view?usp=drive_link">View Certificate</button>
+                </div>
+            </div>
+
+            <div class="exp-item">
+                <div>
+                    <div class="exp-duration">2025</div>
+                    <div class="exp-company">MAHINDRA RESEARCH VALLEY</div>
+                </div>
+                <div>
+                    <div class="exp-role">Internship - Component Development (CDMM) & DAC</div>
+                    <button class="btn-cert open-modal" data-src="https://drive.google.com/file/d/1laWIqTyPTwxOB9Tyxzs4H19AXPmGIEM3/view?usp=drive_link">View Certificate</button>
+                </div>
+            </div>
+
+            <div class="exp-item">
+                <div>
+                    <div class="exp-duration">2025</div>
+                    <div class="exp-company">AI INFOTECH</div>
+                </div>
+                <div>
+                    <div class="exp-role">Internship - IoT & Development and Testing</div>
+                    <button class="btn-cert open-modal" data-src="https://drive.google.com/file/d/1_93B_dRCqqQ-3-nTIyI7u5l7deFA-iXH/view?usp=drive_link">View Certificate</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="sec-label">Skills</div>
+            <div class="skills-grid">
+                <div>
+                    <div class="skill-group-label">Technical</div>
+                    <span class="pill">Basic Java</span>
+                    <span class="pill">Web UI Development</span>
+                    <span class="pill">Google Sheets API</span>
+                </div>
+                <div>
+                    <div class="skill-group-label">Tools</div>
+                    <span class="pill">MS Office</span>
+                    <span class="pill">Canva</span>
+                </div>
+                <div>
+                    <div class="skill-group-label">Soft Skills</div>
+                    <span class="pill">Communication</span>
+                    <span class="pill">Problem Solving</span>
+                    <span class="pill">Team Collaboration</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="sec-label">Projects</div>
+            <div class="proj-grid">
+                <div class="proj-card">
+                    <div class="proj-name">Toll Gate Innovations: Easing Traffic and Boosting Safety</div>
+                    <div class="proj-desc">
+                        Developed an innovative smart toll gate system focused on reducing vehicle congestion and improving traffic flow using hardware sensors and image processing technologies. Integrated a vehicle counting mechanism for lane management and an energy harvesting system using rotary/rack-and-pinion speed breakers to convert mechanical energy into electrical energy.
+                    </div>
+                </div>
+
+                <div class="proj-card">
+                    <div class="proj-name">AI-Based Employee and Feedback Management System</div>
+                    <div class="proj-desc">
+                        Developed during internship at AI Infotech using web development technologies and API integration. The project included role-based login systems, attendance tracking, request management, agenda handling, and token-based anonymous feedback functionality. Implemented responsive UI with real-time data operations via Google Sheets.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="sec-label">Languages</div>
+            <div class="lang-grid">
+                <div class="lang-card"><div class="lang-name-txt">English</div></div>
+                <div class="lang-card"><div class="lang-name-txt">Tamil</div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="pf-footer">SHYAMKUMAR S &nbsp;·&nbsp; shyamkumarvijaya123@gmail.com</div>
+</div>
+
+<!-- Modal Structure -->
+<div class="modal-overlay" id="certModal">
+    <div class="modal-container">
+        <div class="modal-header">
+            <div class="modal-title">Certificate Viewer</div>
+            <button class="close-btn" id="closeModal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <!-- Iframe source will be injected by JavaScript -->
+            <iframe id="certIframe" src=""></iframe>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript for Modal Functionality -->
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const modal = document.getElementById("certModal");
+        const iframe = document.getElementById("certIframe");
+        const closeBtn = document.getElementById("closeModal");
+        const certButtons = document.querySelectorAll(".open-modal");
+
+        // Open Modal
+        certButtons.forEach(button => {
+            button.addEventListener("click", (e) => {
+                e.preventDefault();
+                let rawUrl = button.getAttribute("data-src");
+                
+                // Convert Google Drive '/view' to '/preview' so it works inside an iframe
+                if(rawUrl.includes("drive.google.com") && rawUrl.includes("/view")) {
+                    rawUrl = rawUrl.replace("/view?usp=drive_link", "/preview").replace("/view", "/preview");
+                }
+                
+                iframe.src = rawUrl;
+                modal.classList.add("active");
+            });
+        });
+
+        // Close Modal function
+        const closeModalFunc = () => {
+            modal.classList.remove("active");
+            // clear iframe src after a short delay so the video/pdf stops playing/loading in the background
+            setTimeout(() => { iframe.src = ""; }, 300); 
+        };
+
+        // Close on X button click
+        closeBtn.addEventListener("click", closeModalFunc);
+
+        // Close on clicking outside the modal box
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                closeModalFunc();
+            }
+        });
+        
+        // Close on Escape key
+        document.addEventListener("keydown", (e) => {
+            if(e.key === "Escape" && modal.classList.contains("active")) {
+                closeModalFunc();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
